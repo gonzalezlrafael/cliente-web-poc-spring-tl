@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Agendamento Backoffice - Cursos</title>
+</h:head>
+
+<h:body>
+    <h:form>
+
+        <h:link value="Novo" outcome="editar">
+        </h:link>
+
+        <p:dataTable var="curso" value="#{cursoBean.cursos}">
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Id"/>
+                </f:facet>
+                <h:outputText value="#{curso.id}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Título"/>
+                </f:facet>
+                <h:link value="#{curso.titulo}" outcome="detalhes">
+                    <f:param name="id" value="#{curso.id}" />
+                </h:link>
+
+                <!--<h:commandLink value="#{curso.titulo}" action="#{cursoBean.exibir(curso)}"/>-->
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Corpo"/>
+                </f:facet>
+                <h:outputText value="#{curso.dataInicio}"/>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Ações"/>
+                </f:facet>
+                <h:link value="Editar" outcome="editar">
+                    <f:param name="id" value="#{curso.id}" />
+                </h:link>
+                <h:commandLink value="Remover" action="#{cursoBean.remover(curso.id)}"/>
+                <br/>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+</h:body>
+</html>

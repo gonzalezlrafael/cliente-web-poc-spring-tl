@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+<f:metadata>
+    <f:viewParam name="id" value="#{cursoBean.id}" />
+    <f:event type="preRenderView" listener="#{cursoBean.initDetalhes}" />
+</f:metadata>
+
+<h:head>
+    <title>Agendamento Backoffice - cursos</title>
+</h:head>
+<h:body>
+    <h:form>
+        <h:panelGroup>
+            <p:outputLabel for="id" value="Id: "/>
+            <h:outputText id="id" value="#{cursoBean.curso.id}"/>
+        </h:panelGroup>
+        <br></br>
+        <h:panelGroup>
+            <p:outputLabel for="titulo" value="Título: "/>
+            <h:outputText id="titulo" value="#{cursoBean.curso.titulo}"/>
+        </h:panelGroup>
+        <br></br>
+        <h:panelGroup>
+            <p:outputLabel for="body" value="Corpo: "/>
+            <h:outputText id="body" value="#{cursoBean.curso.dataInicio}"/>
+        </h:panelGroup>
+        <br/>
+        <h:link value="Editar" outcome="editar">
+            <f:param name="id" value="#{cursoBean.curso.id}" />
+        </h:link>
+        <h:commandLink value="Remover" action="#{cursoBean.remover(cursoBean.curso.id)}"/>
+    </h:form>
+</h:body>
+</html>
